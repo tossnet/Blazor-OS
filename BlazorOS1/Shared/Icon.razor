@@ -1,0 +1,32 @@
+﻿<div class="parent" draggable="true" 
+            @ondragstart="@(() => HandleDragStart(@iconModel.Id))" 
+            @onclick="@(() => OnClick(@iconModel.Id))"
+            @ondblclick="@(() => OnDblClick(@iconModel))"
+            >
+    <div class="icon" ><img src="../assets/@iconModel.Picture" /></div>
+    <div class="name">@iconModel.Name</div>
+</div>
+
+@code {
+    [Parameter] public IconModel iconModel { get; set; }
+
+    [Parameter] public EventCallback<int> OnClickIcon { get; set; }
+    [Parameter] public EventCallback<IconModel> OnDblClickIcon { get; set; }
+    [Parameter] public EventCallback<int> OnDragStart { get; set; }
+
+    private  async Task HandleDragStart(int id)
+    {
+        await OnDragStart.InvokeAsync(id);
+    }
+
+    private async Task OnClick(int id)
+    {
+        await OnClickIcon.InvokeAsync(id);
+    }
+
+    private async Task OnDblClick(IconModel icon)
+    {
+        await OnDblClickIcon.InvokeAsync(icon);
+    }
+
+}

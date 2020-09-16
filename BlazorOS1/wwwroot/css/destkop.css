@@ -1,0 +1,71 @@
+﻿.desktop {
+    width: 100%;
+    height: 100vh;
+    background: #c0c0c0;
+    border: 1px solid #555;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.folder {
+    position: absolute;
+    width: 320px;
+    left: 120px;
+    top: 100px;
+    background: #c0c0c0;
+    border-style: double;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    align-items: stretch;
+}
+    .folder:hover {
+        box-shadow: 1px 1px 6px #555;
+    }
+
+.titleBar {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    background: #c0c0c0;
+    border: solid black;
+    border-width: 0px 0px 1px 0px;
+    display: flex;
+}
+    .titleBar:hover {
+        background: #00A;
+    }
+
+.closeButton {
+    text-align: center;
+    background-color: #c0c0c0;
+    background-image: url('../assets/closebutton.png');
+    width: 19px;
+    height: 19px;
+    border: solid black;
+    border-width: 0px 1px 0px 0px;
+}
+    .closeButton:hover {
+        cursor: pointer;
+    }
+
+.nameTitle {
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    -webkit-font-smoothing: none;
+    flex-grow: 1;
+}
+
+.folderContent {
+    width: 100%;
+    height: 120px;
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    background: #fff;
+}
+
+
+

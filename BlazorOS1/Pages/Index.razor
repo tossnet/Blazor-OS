@@ -1,0 +1,26 @@
+﻿@page "/"
+@inject IJSRuntime js;
+
+
+<DestkopComponent Icons="Icons" jsRuntime="@js" />
+
+<audio id="player">
+    <source id="playerSource" src="" />
+</audio>
+
+@code {
+    List<IconModel> Icons = new List<IconModel>();
+
+    protected override void OnInitialized()
+    {
+        Icons = new List<IconModel>
+        {
+            new IconModel { Id = 1, Name="Main", Type = FileTypes.sys, IdContainer=0, Picture = "../assets/group.png" },
+            new IconModel { Id = 2, Name="File Manager", Type = FileTypes.sys, IdContainer=1, Picture = "../assets/file.png" },
+            new IconModel { Id = 3, Name="test", Type = FileTypes.sys, IdContainer=0, Picture = "../assets/notes.png" },
+            new IconModel { Id = 4, Name="toto", Type = FileTypes.img, IdContainer=1, Picture = "../assets/picture.png" },
+            new IconModel { Id = 5, Name="Sound", Type = FileTypes.mp3, IdContainer=1, Picture = "../assets/sound.png" }
+        };
+    }
+
+}
