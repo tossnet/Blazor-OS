@@ -11,7 +11,7 @@ using Microsoft.JSInterop;
 
 namespace BlazorOS1
 {
-    public class DestkopComponent : ComponentBase
+    public class DesktopComponent : ComponentBase
     {
         [Parameter] public List<IconModel> Icons { get; set; }
 
