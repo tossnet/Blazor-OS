@@ -31,20 +31,6 @@ namespace BlazorOS1
             builder.OpenElement(seq++, "div");
             builder.AddAttribute(seq++, "class", "desktop");
 
-            //foreach (var icon in Icons)
-            //{
-            //    if (icon.Type == FileTypes.sys)
-            //    {
-            //        builder.OpenElement(seq++, "div");
-            //        builder.AddAttribute(seq++, "class", "icon filemanagerIcon");
-            //        builder.AddAttribute(seq++, "style", $"background-image: url('../assets/{icon.Picture}');");
-            //        builder.AddAttribute(seq++, "draggable", "true");
-            //        builder.AddAttribute(seq++, "ondblclick", EventCallback.Factory.Create<MouseEventArgs>(this, () => FileManagerClickInternal()));
-            //        builder.CloseElement();
-
-            //    }
-            //}
-            
             builder.OpenRegion(seq++);
             var subseq = 0;
             foreach (IconModel icon in Icons)
@@ -66,45 +52,48 @@ namespace BlazorOS1
             {
                 builder.OpenElement(seq++, "div");
                 builder.AddAttribute(seq++, "class", "folder");
-               
-                builder.OpenElement(seq++, "div");
-                builder.AddAttribute(seq++, "class", "titleBar");
-                builder.AddAttribute(seq++, "draggable", "true");
-
-                    builder.OpenElement(seq++, "div");
-                    builder.AddAttribute(seq++, "class", "closeButton");
-                    builder.AddAttribute(seq++, "onclick", EventCallback.Factory.Create<int>(this, () => IconClickInternal(1)));
-                    builder.CloseElement();
-
-                    builder.OpenElement(seq++, "div");
-                    builder.AddAttribute(seq++, "class", "nameTitle");
-                    builder.AddContent(seq++, "Main");
-                    builder.CloseElement();
-
-                builder.CloseElement(); //titleBar
-
-
-                builder.OpenElement(seq++, "div");
-                builder.AddAttribute(seq++, "class", "folderContent");
-                builder.AddAttribute(seq++, "ondragover", "event.preventDefault();");
-                builder.AddAttribute(seq++, "ondrop", EventCallback.Factory.Create<DragEventArgs>(this, () => HandleDayOnDrop(1)));
-
-
-                foreach (IconModel icon in Icons)
                 {
-                    if (icon.IdContainer == 1)
+                    builder.OpenElement(seq++, "div");
+                    builder.AddAttribute(seq++, "class", "titleBar");
+                    builder.AddAttribute(seq++, "draggable", "true");
                     {
-                        builder.OpenComponent<Icon>(seq++);
-                        builder.AddAttribute(seq++, "IconModel", icon);
-                        builder.AddAttribute(seq++, "OnDblClickIcon", EventCallback.Factory.Create<IconModel>(this, () => IconDblClickInternal(icon)));
-                        builder.CloseComponent();
+                        builder.OpenElement(seq++, "div");
+                        builder.AddAttribute(seq++, "class", "closeButton");
+                        builder.AddAttribute(seq++, "onclick", EventCallback.Factory.Create<int>(this, () => IconClickInternal(1)));
+                        builder.CloseElement();
 
+                        builder.OpenElement(seq++, "div");
+                        builder.AddAttribute(seq++, "class", "nameTitle");
+                        builder.AddContent(seq++, "Main");
+                        builder.CloseElement();
                     }
-                }
-                builder.CloseElement();
-                
 
-                builder.CloseElement();
+                    builder.CloseElement(); //titleBar
+
+
+                    builder.OpenElement(seq++, "div");
+                    builder.AddAttribute(seq++, "class", "folderContent");
+                    builder.AddAttribute(seq++, "ondragover", "event.preventDefault();");
+                    builder.AddAttribute(seq++, "ondrop", EventCallback.Factory.Create<DragEventArgs>(this, () => HandleDayOnDrop(1)));
+
+                    builder.OpenRegion(seq++);
+                    subseq = 0;
+                    foreach (IconModel icon in Icons)
+                    {
+                        if (icon.IdContainer == 1)
+                        {
+                            builder.OpenComponent<Icon>(subseq++);
+                            builder.AddAttribute(subseq++, "IconModel", icon);
+                            builder.AddAttribute(subseq++, "OnDblClickIcon", EventCallback.Factory.Create<IconModel>(this, () => IconDblClickInternal(icon)));
+                            builder.CloseComponent();
+
+                        }
+                    }
+                    builder.CloseRegion();
+
+                    builder.CloseElement(); //folderContent
+                }
+                builder.CloseElement(); // folder
             }
 
 
