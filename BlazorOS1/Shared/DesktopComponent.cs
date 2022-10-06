@@ -28,8 +28,8 @@ namespace BlazorOS1
             base.BuildRenderTree(builder);
 
             var seq = 0;
-            builder.OpenElement(seq++, "div");
-            builder.AddAttribute(seq++, "class", "desktop");
+            builder.OpenElement(10, "div");
+            builder.AddAttribute(20, "class", "desktop");
 
             builder.OpenRegion(seq++);
             var subseq = 0;
