@@ -1,6 +1,6 @@
 # Blazor-OS
 
-Small test of components created with BuilderRendreTree for fun 😜
+Small test of components created with BuilderRendreTree for fun 😜 : http://tiny.cc/win31
 
 Source code of the talk presented on September 23, 2020 for the MS DEV group of Montreal
 
