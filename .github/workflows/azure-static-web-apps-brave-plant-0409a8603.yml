@@ -15,11 +15,15 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
+    
       - uses: actions/checkout@v2
         with:
           submodules: true
           
-    # build the app manually
+      # build the app manually
       - name: 'Artifact: azure-swa'
         run: dotnet publish --output dist
       
